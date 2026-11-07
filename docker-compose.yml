@@ -1,0 +1,23 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      DATABASE_URL: postgresql+psycopg://dispute:localdemo@db:5432/disputes
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Set JWT_SECRET_KEY in .env}
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: dispute
+      POSTGRES_PASSWORD: localdemo
+      POSTGRES_DB: disputes
+    volumes: ["banking-data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dispute -d disputes"]
+      interval: 5s
+      retries: 10
+volumes:
+  banking-data:
