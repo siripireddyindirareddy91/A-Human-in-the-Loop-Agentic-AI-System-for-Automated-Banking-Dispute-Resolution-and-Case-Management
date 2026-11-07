@@ -1,5 +1,11 @@
 # DisputeOS — Banking Dispute Resolution
 
+**Live website:** [Open DisputeOS](https://disputeos-banking-resolution.vercel.app)
+
+Demo login: `officer@demo.bank` / `Demo@2026!`. All banking data is synthetic.
+
+The sidebar scrolls independently on short screens. The seeded workspace includes detailed complaints, transaction locations and recent dates, executed ten-agent results, case notes, sample historical approvals, and notifications. Seeded historical reviews are explicitly marked as synthetic. Existing cases with investigation results, reviews, notes, or evidence are preserved during the versioned data update.
+
 A functional synthetic banking sandbox: React/TypeScript, FastAPI, SQLAlchemy, JWT, bcrypt and ten deterministic LangGraph agents. Humans approve decisions. No real money operations are connected.
 
 ## Windows PowerShell setup

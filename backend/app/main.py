@@ -247,3 +247,8 @@ def export(format:str='csv',u=Depends(auth),s=Depends(session)):
     out=io.StringIO(); writer=csv.writer(out); writer.writerow(['Case','Category','Amount','Status','Risk'])
     for c in cs: writer.writerow([c['id'],c['category'],c['amount'],c['status'],c['risk_score']])
     return Response(out.getvalue(),media_type='text/csv',headers={'Content-Disposition':'attachment; filename="disputes.csv"'})
+
+if DEMO:
+    import sys
+    from backend.app.demo_data import enrich_demo
+    enrich_demo(sys.modules[__name__])
